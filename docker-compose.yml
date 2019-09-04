@@ -1,0 +1,81 @@
+version: "3"
+services:
+  redis-slave1:
+    build: ./redis1
+    ports:
+      - 7000:7000
+      - 17000:17000
+    networks:
+      app_net:
+        ipv4_address: 173.17.0.2
+    volumes:
+      - /root/redis-docker-test/redis1:/usr/local/etc/redis
+      - /root/redis-docker-test/redis1/data:/var/lib/redis:z
+    privileged: true
+  redis-slave2:
+    build: ./redis2
+    ports:
+      - 7001:7001
+      - 17001:17001
+    networks:
+      app_net:
+        ipv4_address: 173.17.0.3
+    volumes:
+      - /root/redis-docker-test/redis2:/usr/local/etc/redis
+      - /root/redis-docker-test/redis2/data:/var/lib/redis:z
+    privileged: true
+  redis-slave3:
+    build: ./redis3
+    ports:
+      - 7002:7002
+      - 17002:17002
+    networks:
+      app_net:
+        ipv4_address: 173.17.0.4
+    volumes:
+      - /root/redis-docker-test/redis3:/usr/local/etc/redis
+      - /root/redis-docker-test/redis3/data:/var/lib/redis:z
+    privileged: true
+  redis-slave4:
+    build: ./redis4
+    ports:
+      - 7003:7003
+      - 17003:17003
+    networks:
+      app_net:
+        ipv4_address: 173.17.0.5
+    volumes:
+      - /root/redis-docker-test/redis4:/usr/local/etc/redis
+      - /root/redis-docker-test/redis4/data:/var/lib/redis:z
+    privileged: true
+  redis-slave5:
+    build: ./redis5
+    ports:
+      - 7004:7004
+      - 17004:17004
+    networks:
+      app_net:
+        ipv4_address: 173.17.0.6
+    volumes:
+      - /root/redis-docker-test/redis5:/usr/local/etc/redis
+      - /root/redis-docker-test/redis5/data:/var/lib/redis:z
+    privileged: true
+  redis-slave6:
+    build: ./redis6
+    ports:
+      - 7005:7005
+      - 17005:17005
+    networks:
+      app_net:
+        ipv4_address: 173.17.0.7
+    volumes:
+      - /root/redis-docker-test/redis6:/usr/local/etc/redis
+      - /root/redis-docker-test/redis6/data:/var/lib/redis:z
+    privileged: true
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 173.17.0.0/16
